@@ -3,7 +3,6 @@ package string.sumbin;
 import java.util.Scanner;
 
 /**
- * @see SumBinStr.md
  * @see SumBinStrTest
  */
 public class SumBinStrSolution {

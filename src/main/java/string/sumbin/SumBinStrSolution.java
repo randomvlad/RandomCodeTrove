@@ -1,53 +1,55 @@
 package string.sumbin;
 
+import java.util.Scanner;
+
 /**
  * @see SumBinStr.md
+ * @see SumBinStrTest
  */
 public class SumBinStrSolution {
 
-	// TODO: add Scanner & JUnit Test
-	
 	public static void main( String[] args ) {
-		// '110' = 6
-		// '101' = 5
-		// '1011' = 11
-		// sum = addStrings('110', '101'); // sum is '1011'
 
-		System.out.println( addStrings( "111", "111" ) );
+		Scanner scanner = new Scanner( System.in );
+
+		String value1 = scanner.next();
+		String value2 = scanner.next();
+
+		scanner.close();
+
+		System.out.println( sum( value1, value2 ) );
 	}
 	
-	// Runtime: O(n), where n = characters in max( number1.length, number.length );
-	// Space complexity: O(1)
-	public static String addStrings( String number1, String number2 ) {
-
-		String sum = "";
-		int carry = 0;
-		int length = Math.max( number1.length(), number2.length() );
+	public static String sum( String number1, String number2 ) {
 		
-		for ( int i = length - 1; i >= 0; i-- ) {
-			int num1 = isValidIndex( number1, i ) ? Integer.valueOf( number1.charAt( i ) ) : 0;
-			int num2 = isValidIndex( number2, i ) ? Integer.valueOf( number2.charAt( i ) ) : 0;
-
-			int intermediateSum = num1 + num2 + carry;
-
-			sum = String.valueOf( intermediateSum % 2 ) + sum;
-
-			if ( intermediateSum > 1 ) {
-				carry = intermediateSum / 2;
-			} else {
-				carry = 0;
+		StringBuilder sbSum = new StringBuilder();
+		
+		int index1 = number1.length() - 1;
+		int index2 = number2.length() - 1;
+		int carry = 0;
+		
+		while ( index1 >= 0 || index2 >= 0 ) {
+			int intermediateSum = carry;
+			
+			if ( index1 >= 0 ) {
+				intermediateSum += number1.charAt( index1 ) - '0';
+				index1--;
 			}
+			
+			if ( index2 >= 0 ) {
+				intermediateSum += number2.charAt( index2 ) - '0';
+				index2--;
+			}
+			
+			carry = intermediateSum >> 1;
+			sbSum.append( (intermediateSum & 1) == 1 ? '1' : '0' );
 		}
-
+		
 		if ( carry > 0 ) {
-			sum = "1" + sum;
+			sbSum.append( '1' );
 		}
-
-		return sum;
-	}
-
-	public static boolean isValidIndex( String str, int index ) {
-		return index >= 0 && index < str.length();
+		
+		return sbSum.reverse().toString();
 	}
 
 }

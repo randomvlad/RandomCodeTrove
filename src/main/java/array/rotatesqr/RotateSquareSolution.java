@@ -1,5 +1,6 @@
 package array.rotatesqr;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -11,26 +12,37 @@ public class RotateSquareSolution {
 
 	public static void main( String[] args ) {
 		
-		System.out.println( new SquareRotater( readInput() ).rotate().toString() );
+		int[][] matrix = readInput( System.in );
+		if ( matrix == null ) {
+			System.out.println( "ERROR" );
+			return;
+		}
 		
+		System.out.println( new SquareRotater( matrix ).rotate().toString() );
 	}
 
-	public static int[][] readInput() {
-
-		// TODO: print ERROR if matrix is not a square
-
-		Scanner scanner = new Scanner( System.in );
-
-		int dimension = scanner.nextInt();
+	public static int[][] readInput( InputStream stream ) {
+		
+		Scanner scanner = new Scanner( stream );
+	
+		int dimension = Integer.valueOf( scanner.nextLine() );
 
 		int[][] matrix = new int[ dimension ][ dimension ];
 
 		for ( int i = 0; i < dimension; i++ ) {
+			
+			String[] numbers = scanner.nextLine().split( "\\s+" );
+			
+			if ( numbers.length != dimension ) {
+				scanner.close();
+				return null;
+			}
+			
 			for ( int j = 0; j < dimension; j++ ) {
-				matrix[ i ][ j ] = scanner.nextInt();
+				matrix[ i ][ j ] = Integer.valueOf( numbers[ j ] );
 			}
 		}
-
+		
 		scanner.close();
 
 		return matrix;
@@ -46,32 +58,32 @@ class SquareRotater {
 	}
 
 	public SquareRotater rotate() {
-		int length = matrix.length;
-		for ( int i = 0; i < matrix.length / 2; i++ ) {
-			rotateLayer( matrix, i, i, length );
-			length -= 2;
+		
+		for ( int layerIndex = 0; layerIndex < matrix.length / 2; layerIndex++ ) {
+			rotateLayer( matrix, layerIndex );
 		}
 		
 		return this;
 	}
 
-	public void rotateLayer( int[][] matrix, int x, int y, int layerWidth ) {
-		if ( layerWidth <= 1 ) {
+	public void rotateLayer( int[][] matrix, int layerIndex ) {
+		int length = getLayerLength( layerIndex );
+		if ( length <= 1 ) {
 			return;
 		}
-
-		int xMin = x;
-		int yMin = y;
+		
+		int x = layerIndex;
+		int y = layerIndex;
+		
 		int replaced = matrix[ y ][ x ];
+		
+		int numberSwaps = 4 * (length - 1);
+		for ( int i = 0; i < numberSwaps; i++ ) {
 
-		for ( int i = 0; i < layerWidth * layerWidth; i++ ) {
-
-			int[] steps = calcStepIncrement( x, y, xMin, yMin, layerWidth );
-			int xStep = steps[ 0 ];
-			int yStep = steps[ 1 ];
-
-			int xNext = x + xStep;
-			int yNext = y + yStep;
+			int[] steps = calcStepIncrement( x, y, layerIndex, length );
+			
+			int xNext = x + steps[ 0 ];
+			int yNext = y + steps[ 1 ];
 
 			int temp = matrix[ yNext ][ xNext ];
 			matrix[ yNext ][ xNext ] = replaced;
@@ -81,35 +93,36 @@ class SquareRotater {
 			y = yNext;
 		}
 	}
+	
+	private int getLayerLength( int layerIndex ) {
+		int length = matrix.length - 2 * layerIndex;
+		return length >= 1 ? length : 0;
+	}
 
-	private int[] calcStepIncrement( int x, int y, int xMin, int yMin, int layerWidth ) {
+	private int[] calcStepIncrement( int x, int y, int layerIndex, int layerWidth ) {
 
+		int xMin = layerIndex;
+		int yMin = layerIndex;				
 		int xMax = xMin + layerWidth - 1;
 		int yMax = yMin + layerWidth - 1;
 
-		int xStep = -1;
-		int yStep = -1;
+		int xStep = 0;
+		int yStep = 0;
 
-		if ( y == yMin && x <= xMax - 1 ) {
-			// move: left to right along y-axis
+		if ( y == yMin && x < xMax ) {
+			// x moves left to right along y-axis
 			xStep = 1;
-			yStep = 0;
-		} else if ( x == xMax && y <= yMax - 1 ) {
-			// move: top to bottom along x-axis
-			xStep = 0;
-			yStep = 1;
-		} else if ( y == yMax && xMin + 1 <= x ) {
-			// move: right to left along y-axis
-			xStep = -1;
-			yStep = 0;
-		} else if ( x == xMin && yMin + 1 <= y ) {
-			// move bottom to top along x-axis
-			xStep = 0;
-			yStep = -1;
-		} else {
-			throw new IllegalStateException( "Unknown steps for (x,y) = (" + x + "," + y + ")" );
+		} else if ( x == xMax && y < yMax ) {
+			// y moves top to bottom along x-axis
+			yStep = 1; 
+		} else if ( y == yMax && xMin < x ) {
+			// x moves right to left along y-axis
+			xStep = -1; 
+		} else if ( x == xMin && yMin < y ) {
+			// y moves bottom to top along x-axis
+			yStep = -1; 
 		}
-
+		
 		return new int[] { xStep, yStep };
 	}
 

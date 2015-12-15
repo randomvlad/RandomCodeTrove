@@ -1,12 +1,27 @@
 package array.rotatesqr;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.io.ByteArrayInputStream;
 
 import org.junit.Test;
 
 public class RotateSquareTest {
 	
 	public final static String NL = System.lineSeparator();
+	
+	@Test
+	public void testInvalidDimensionInput() {
+		
+		String input = "2" + NL +
+				"1 2" + NL +
+				"3 4 5 6 7";
+		
+		int[][] matrix = RotateSquareSolution.readInput( new ByteArrayInputStream( input.getBytes() ) );
+		
+		assertNull( matrix );
+	}
 	
 	@Test
 	public void testRotateThreeByTree() {
@@ -20,6 +35,24 @@ public class RotateSquareTest {
 				"4 1 2" + NL + 
 				"7 5 3" + NL + 
 				"8 9 6",
+				new SquareRotater( square ).rotate().toString()
+		);
+	}
+	
+	@Test
+	public void testRotateFourByFour() {
+		int[][] square = {
+				{ 100, 101, 102, 103 },
+				{ 111, 200, 201, 104 },
+				{ 110, 203, 202, 105 },
+				{ 109, 108, 107, 106 }
+		};
+		
+		assertEquals( 
+				"111 100 101 102" + NL + 
+				"110 203 200 103" + NL +
+				"109 202 201 104" + NL +
+				"108 107 106 105",
 				new SquareRotater( square ).rotate().toString()
 		);
 	}

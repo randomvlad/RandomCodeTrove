@@ -5,8 +5,10 @@
 Given an input of N string values, determine if each string contains properly opened and closed braces. Account for {}, () and [] braces. If valid print YES, otherwise output an error message as described below.
 
 Error Message Format:
+```
 ${original value}\n 
 ${padding up to invalid brace}^ ERROR: brace ${brace symbol} is not closed\n
+```
 
 Example:
 ```
@@ -21,7 +23,7 @@ YES
         ^ ERROR: brace ( is not closed
 ```
 
-For more examples, see [Unit test](src/main/java/string/braces/BracesTest.java).
+For more examples, see [Unit test](BracesTest.java).
 
 ### Notes:
 * I've encountered a slightly simpler version of this problem on a HackerRank exam for a company that was hiring. Original requirements were merely to print out YES or NO if a string had correctly closed/opened braces.

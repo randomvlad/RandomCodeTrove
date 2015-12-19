@@ -1,9 +1,7 @@
 package string.braces;
 
 class Result {
-	
-	public final static String MESSAGE_TEMPLATE = "";
-	
+		
 	private boolean valid;
 	private Brace braceInError;
 	private String value;

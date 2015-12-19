@@ -1,24 +1,19 @@
 package string.braces;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
 class BracesValidator {
 	
-	private static Map<Character, Character> startEndDefs;
+	private Map<Character, Character> startEndDefs;
 
 	public BracesValidator() {
-		init();
-	}
-	
-	private void init() {
-		if ( startEndDefs == null ) {
-			startEndDefs = new HashMap<>();
-			startEndDefs.put( '[', ']' );
-			startEndDefs.put( '(', ')' );
-			startEndDefs.put( '{', '}' );
-		}
+		startEndDefs = new HashMap<>();
+		startEndDefs.put( '[', ']' );
+		startEndDefs.put( '(', ')' );
+		startEndDefs.put( '{', '}' );
 	}
 	
 	public boolean isBrace( char value ) {
@@ -27,7 +22,7 @@ class BracesValidator {
 	
 	public Result validate( String value ) {
 		
-		Stack<Brace> opened = new Stack<>(); 
+		Deque<Brace> opened = new ArrayDeque<>();
 		
 		Result result = new Result( value );
 		

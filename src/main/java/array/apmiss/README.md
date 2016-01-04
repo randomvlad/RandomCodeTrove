@@ -35,9 +35,7 @@ Output:
 ```
 
 ## Solution:
-See:
-- Main class: [ApMissingEleFinder.java](ApMissingEleFinder.java)
-- Unit tests: [ApMissingEleFinderTest.java](ApMissingEleFinderTest.java)
+See main class [ApMissingEleFinder.java](ApMissingEleFinder.java) and unit tests [ApMissingEleFinderTest.java](ApMissingEleFinderTest.java).
 
 ### Notes:
-- A naive solution will run in O(n) as the full sequence is iterated over to establish the missing element. However, there is a faster approach O(log(n)) by using a slightly tweaked version of a binary search. That's possible due to the nature of arithmetic sequences where each element a(i) = a(0) + step * i.
+- A naive solution will run in O(n) as the full sequence is iterated over to establish the missing element. However, there is a faster approach O(log(n)) by using a slightly tweaked version of a binary search. That's possible due to the nature of arithmetic sequences where each element can be calculated easily via a(i) = a(0) + step * i.

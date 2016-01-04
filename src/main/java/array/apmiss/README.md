@@ -2,13 +2,11 @@
 
 ### Problem Definition:
 
-Find the missing element in an (arithmetic progression)[https://en.wikipedia.org/wiki/Arithmetic_progression] of N elements. 
+Find the missing element in an [arithmetic progression](https://en.wikipedia.org/wiki/Arithmetic_progression) of N elements. 
 
-#### Input Format:
-First line contains number of elements N. Second line has N number of space separated integers.
+**Input Format:** First line contains number of elements N. Second line has N number of space separated integers.
 
-#### Output Format:
-Print the missing element.
+**Output Format:** Print the missing element.
 
 #### Constraints & Assumptions:
 - each element is to be treated as a whole integer
@@ -35,6 +33,11 @@ Input:
 Output:
 -6
 ```
+
+## Solution:
+See:
+- Main class: [ApMissingEleFinder.java](ApMissingEleFinder.java)
+- Unit tests: [ApMissingEleFinderTest.java](ApMissingEleFinderTest.java)
 
 ### Notes:
 - A naive solution will run in O(n) as the full sequence is iterated over to establish the missing element. However, there is a faster approach O(log(n)) by using a slightly tweaked version of a binary search. That's possible due to the nature of arithmetic sequences where each element a(i) = a(0) + step * i.

@@ -21,6 +21,7 @@ public class ApMissingEleFinder {
 		
 		int step = findStep( sequence );
 		
+		// perform a binary search for missing element in O(log(n))
 		int start = 0;
 		int end = sequence.size() - 1;
 		while ( start <= end ) {

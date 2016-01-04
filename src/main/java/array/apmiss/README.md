@@ -1,4 +1,4 @@
-## Arithmetic Progression Missing Element Finder
+## Arithmetic Progression Missing Element
 
 ### Problem Definition:
 

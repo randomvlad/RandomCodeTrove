@@ -12,12 +12,9 @@ public class ReverseListMain {
 
 	public static void main( String[] args ) {
 		
-		String[] data = readInput( System.in );
-		
-		LinkedList list = new LinkedList ( data );
-		
+		LinkedList list = readInput( System.in );
+				
 		list.reverse();
-		
 		System.out.println( list );
 		
 		list.reverse();
@@ -26,19 +23,21 @@ public class ReverseListMain {
 		System.out.println( list );
 	}
 	
-	public static String[] readInput( InputStream stream ) {
+	public static LinkedList readInput( InputStream stream ) {
 		Scanner scanner = new Scanner( stream );
-		
-		String data = scanner.next();
-		
+		LinkedList list = create( scanner.next() );
 		scanner.close();
-		
-		String[] elements = new String[ data.length() ];
-		for ( int i = 0; i < data.length(); i++ ) {
-			elements[ i ] = data.charAt( i ) + "";
+		return list;
+	}
+	
+	public static LinkedList create( String elements ) {
+	
+		LinkedList list = new LinkedList();
+		for ( int i = 0; i < elements.length(); i++ ) {
+			list.add( elements.charAt( i ) + "" );
 		}
 		
-		return elements;
+		return list;
 	}
 
 }

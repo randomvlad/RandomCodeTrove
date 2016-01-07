@@ -28,16 +28,13 @@ public class LinkedList {
 		} else {
 			last().setNext( newNode );
 		}
+		
+		size++;
 	}
 	
-	/**
-	 * TODO: consider implementing another version using recursion
-	 * http://stackoverflow.com/questions/354875/reversing-a-linked-list-in-java
-	 * -recursively
-	 */
-	public void reverse() {
+	public LinkedList reverse() {
 		if ( size() <= 1 ) {
-			return;
+			return this;
 		}
 
 		LinkedNode prev = head;
@@ -60,11 +57,34 @@ public class LinkedList {
 			}
 
 		} while ( current != null );
+		
+		return this;
+	}
+	
+	public LinkedList reverseRecursive() {
+		head = reverseRecursive( head );
+		return this;
+	}
+	
+	private LinkedNode reverseRecursive( LinkedNode current ) {
+		
+		if ( current == null || current.getNext() == null ) {
+			return current;
+		}
+		
+		LinkedNode next = current.getNext();
+		current.setNext( null );
+		
+		LinkedNode reversed = reverseRecursive( next );
+		
+		next.setNext( current );
+		
+		return reversed;
 	}
 
-	public void reversePairs() {
+	public LinkedList reversePairs() {
 		if ( this.size() <= 2 ) {
-			return;
+			return this;
 		}
 
 		LinkedNode prev = head;
@@ -81,7 +101,7 @@ public class LinkedList {
 		LinkedNode next = null;
 
 		do {
-			next = current.getNext();
+			next = current.getNext().getNext();
 			
 			current.getNext().setNext( prev );
 
@@ -95,10 +115,7 @@ public class LinkedList {
 
 		} while ( current != null );
 		
-	}
-	
-	public void reversePairSwitch() {
-		// TODO: implement
+		return this;
 	}
 	
 	public LinkedNode first() {
@@ -132,7 +149,7 @@ public class LinkedList {
 		if ( isEmpty() ) {
 			return "[]";
 		}
-
+		
 		List<String> values = new ArrayList<>( size );
 		LinkedNode current = head;
 		values.add( current.getValue() );
@@ -141,9 +158,7 @@ public class LinkedList {
 			values.add( current.getValue() );
 		}
 		
-		String display = values.stream().collect( Collectors.joining( " -> " ) );
-		
-		return "[ " + display + " ]";
+		return values.stream().collect( Collectors.joining( " -> " ) );
 	}
 
 }

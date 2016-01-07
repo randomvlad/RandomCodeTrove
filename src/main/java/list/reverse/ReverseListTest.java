@@ -8,24 +8,32 @@ public class ReverseListTest {
 
 	@Test	
 	public void testReverse() {
-
-		LinkedList list = new LinkedList( "A", "B", "C", "D", "E" );
 		
-		list.reverse();
-
-		assertEquals( "TODO", list.toString() );
+		LinkedList list = ReverseListMain.create( "abcdef" );
+		assertEquals( "f -> e -> d -> c -> b -> a", list.reverse().toString() );
+		assertEquals( "a -> b -> c -> d -> e -> f", list.reverse().toString() );
+		
 	}
 	
-	// TODO: test even and odd
+	@Test
+	public void testReverseRecursive() {
+	
+		LinkedList list = ReverseListMain.create( "abcdef" );
+		assertEquals( "f -> e -> d -> c -> b -> a", list.reverseRecursive().toString() );
+		assertEquals( "a -> b -> c -> d -> e -> f", list.reverseRecursive().toString() );
+	}
+	
 	@Test
 	public void testReversePairs() {
-		LinkedList list = new LinkedList( "A", "B", "C", "D", "E" );
 		
-		list.reversePairs();
+		LinkedList listOdd = ReverseListMain.create( "abcde" );
+		assertEquals( "d -> e -> b -> c -> a", listOdd.reversePairs().toString() );
+		assertEquals( "c -> a -> e -> b -> d", listOdd.reversePairs().toString() );
 		
-		assertEquals( "TODO", list.toString() );
+		LinkedList listEven = ReverseListMain.create( "abcdef" );
+		assertEquals( "e -> f -> c -> d -> a -> b", listEven.reversePairs().toString() );
+		assertEquals( "a -> b -> c -> d -> e -> f", listEven.reversePairs().toString() );
 		
-		list = new LinkedList( "A", "B", "C", "D", "E", "F" );		
 	}
 
 }

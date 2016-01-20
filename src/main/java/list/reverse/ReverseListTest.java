@@ -35,5 +35,26 @@ public class ReverseListTest {
 		assertEquals( "a -> b -> c -> d -> e -> f", listEven.reversePairs().toString() );
 		
 	}
+	
+	@Test
+	public void testReverseAlternateK() {
+		
+		LinkedList list = ReverseListMain.create( "abc" );
+		assertEquals( "c -> b -> a", list.reverseAlternateK( 3 ).toString() );
+		
+		list = ReverseListMain.create( "abc" );
+		assertEquals( "c -> b -> a", list.reverseAlternateK( 5 ).toString() );
+		
+		list = ReverseListMain.create( "abcde" );
+		assertEquals( "b -> a -> c -> d -> e", list.reverseAlternateK( 2 ).toString() );
+		
+		list = ReverseListMain.create( "abcdefghi" );
+		assertEquals( "c -> b -> a -> d -> e -> f -> i -> h -> g", list.reverseAlternateK( 3 ).toString() );
+		assertEquals( "a -> b -> c -> d -> e -> f -> g -> h -> i", list.reverseAlternateK( 3 ).toString() );
+		
+		list = ReverseListMain.create( "abcdef" );
+		assertEquals( "e -> d -> c -> b -> a -> f", list.reverseAlternateK( 5 ).toString() );
+		
+	}
 
 }

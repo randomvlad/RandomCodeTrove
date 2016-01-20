@@ -7,9 +7,4 @@ Code Trove (4):
 * [Sum Binary Strings](src/main/java/string/sumbin)
 * [Braces Validator](src/main/java/string/braces)
 * [AP Missing Element](src/main/java/array/apmiss)
-
-<!--
-// update count when ready
 * [Linked List Reversal](src/main/java/list/reverse)
-
--->

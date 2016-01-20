@@ -1,6 +1,5 @@
 package list.reverse;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -12,22 +11,19 @@ public class ReverseListMain {
 
 	public static void main( String[] args ) {
 		
-		LinkedList list = readInput( System.in );
-				
-		list.reverse();
-		System.out.println( list );
-		
-		list.reverse();
-		list.reversePairs();
-		
-		System.out.println( list );
-	}
-	
-	public static LinkedList readInput( InputStream stream ) {
-		Scanner scanner = new Scanner( stream );
-		LinkedList list = create( scanner.next() );
+		Scanner scanner = new Scanner( System.in );
+		String elements = scanner.next();
+		int reverseAltK = scanner.nextInt();
 		scanner.close();
-		return list;
+		
+		LinkedList list = create( elements );
+		System.out.println( list.reverse().toString() );
+
+		list = create( elements );
+		System.out.println( list.reversePairs().toString() );
+		
+		list = create( elements );
+		System.out.println( list.reverseAlternateK( reverseAltK ).toString() );
 	}
 	
 	public static LinkedList create( String elements ) {

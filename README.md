@@ -8,3 +8,7 @@ Code Trove (5):
 * [Braces Validator](src/main/java/string/braces)
 * [AP Missing Element](src/main/java/array/apmiss)
 * [Linked List Reversal](src/main/java/list/reverse)
+
+<!--
+* [Sentence Permutations](src/main/java/string/sentence)
+-->

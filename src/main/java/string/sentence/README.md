@@ -24,6 +24,3 @@ Vlad was in crabby mood and went to the library.
 
 ## Solution:
 See main class [SentencePermuteMain.java](SentencePermuteMain.java) and unit tests [SentencePermuteTest.java](SentencePermuteTest.java).
-
-### Notes:
-- TODO: write me

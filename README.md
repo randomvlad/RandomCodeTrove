@@ -9,7 +9,4 @@ Code Trove (6):
 * [AP Missing Element](src/main/java/array/apmiss)
 * [Linked List Reversal](src/main/java/list/reverse)
 * [Sentence Permutations](src/main/java/string/sentence)
-
-<!--
 * [Bliffoscope](src/main/java/array/bliffoscope)
--->

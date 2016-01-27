@@ -5,32 +5,33 @@ import java.awt.Point;
 
 public class BliffoscopeDetector {
 	
+	public final static double DEFAULT_ACCURACY = 0.75;
+	
 	public static BliffoscopeDetector getInstance() {
-		final double DEFAULT_ACCURACY = 0.75;
 		return new BliffoscopeDetector( DEFAULT_ACCURACY );
 	}
 	
-	private double acceptableAccuracy; 
+	private double accuracy; 
 	
-	private BliffoscopeDetector( double defaultAccuracy ) {
-		acceptableAccuracy = defaultAccuracy;
+	private BliffoscopeDetector( double accuracy ) {
+		this.accuracy = accuracy;
 	}
 	
 	/**
-	 * @param accuracy percentage must be within 0 to 1 range
+	 * @param value percentage must be within 0 to 1 range
 	 * @see #detect(Image, Image)
 	 */
-	public void setAcceptableAccuracy( double accuracy ) {
-		if( accuracy >= 0 && accuracy <= 1 ) {
-			acceptableAccuracy = accuracy; 
+	public void setAccuracy( double value ) {
+		if( value >= 0 && value <= 1 ) {
+			accuracy = value; 
 		}
 	}
 	
 	/**
 	 * @return Detection accuracy percentage within 0 to 1 range
 	 */
-	public double getAcceptableAccuracy() {
-		return acceptableAccuracy;
+	public double getAccuracy() {
+		return accuracy;
 	}
 	
 	/**
@@ -39,7 +40,7 @@ public class BliffoscopeDetector {
 	 * controls how exact a match has to be.
 	 * 
 	 * @return A non-null list of detection results
-	 * @see #setAcceptableAccuracy(double)
+	 * @see #setAccuracy(double)
 	 * @throws NullPointerException if either source or target are null
 	 */
 	public List<DetectionResult> detect( Image source, Image target ) {
@@ -53,10 +54,10 @@ public class BliffoscopeDetector {
 				Image subsetImage = source.createSubset( x, y, target.getLength(), target.getHeight() );
 				
 				double imageSimilarity = subsetImage.calculateSimilarity( target );
-				if( imageSimilarity >= acceptableAccuracy ) {
+				if( imageSimilarity >= accuracy ) {
 					DetectionResult result = new DetectionResult( target.getName(), imageSimilarity );
 					
-					int endTargetX =  x + target.getLength() - 1;
+					int endTargetX = x + target.getLength() - 1;
 					int endTargetY = y + target.getHeight() - 1;
 					
 					Point topLeft = new Point( x, y );

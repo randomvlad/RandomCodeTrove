@@ -18,7 +18,7 @@ public class BliffoscopeMain {
 		Image spaceTerrain = loadImage( "space", "data/TestData.blf" );
 
 		BliffoscopeDetector detector = BliffoscopeDetector.getInstance();
-		// detector.setAcceptableAccuracy( 0.71 );
+		// detector.setAccuracy( 0.71 );
 
 		List<DetectionResult> results = new ArrayList<>();
 		results.addAll( detector.detect( spaceTerrain, targetShip ) );
@@ -26,11 +26,9 @@ public class BliffoscopeMain {
 
 		if ( !results.isEmpty() ) {
 			Collections.sort( results, Collections.reverseOrder() );
-
-			System.out.println( "Found (" + results.size() + ") targets:" );
-			for ( DetectionResult result : results ) {
-				System.out.println( result.toString() );
-			}
+			
+			System.out.println( "Found " + results.size() + " targets:" );
+			results.stream().forEach( r -> System.out.println( r ) );
 		} else {
 			System.out.println( "No targets detected" );
 		}

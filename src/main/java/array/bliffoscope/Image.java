@@ -68,18 +68,18 @@ public class Image {
 	/**
 	 * @return True if coordinate (x,y) is a valid pixel position within the image boundaries
 	 * 
-	 * @see #getPixelAt(int, int)
+	 * @see #getPixel(int, int)
 	 */
-	public boolean hasPixelAt( int x, int y ) {
+	public boolean hasPixel( int x, int y ) {
 		return pixelGrid.length > 0 && y < pixelGrid.length 
 				&& pixelGrid[ 0 ].length > 0 && x < pixelGrid[ 0 ].length;
 	}
 	
 	/**
 	 * @throws ArrayIndexOutOfBoundsException if x or y are out of bounds
-	 * @see #hasPixelAt(int, int)
+	 * @see #hasPixel(int, int)
 	 */
-	public char getPixelAt( int x, int y ) {
+	public char getPixel( int x, int y ) {
 		return pixelGrid[ y ][ x ];
 	}
 	
@@ -109,7 +109,7 @@ public class Image {
 		double matchedPixels = 0;
 		for( int x = 0; x < image.getLength(); x++ ) {
 			for( int y = 0; y < image.getHeight(); y++ ) {
-				if( this.getPixelAt(x, y) == image.getPixelAt(x, y) ) {
+				if( this.getPixel(x, y) == image.getPixel(x, y) ) {
 					matchedPixels++;
 				}
 			}
@@ -128,7 +128,7 @@ public class Image {
 	public Image createSubset( int startX, int startY, int length, int height ) {
 		int endX = startX + length - 1;
 		int endY = startY + height - 1; 
-		if( ! hasPixelAt(startX, startY) || ! hasPixelAt(endX, endY) ) {
+		if( ! hasPixel(startX, startY) || ! hasPixel(endX, endY) ) {
 			return new Image();
 		}
 		
@@ -136,7 +136,7 @@ public class Image {
 	
 		for( int y = 0; y < height; y++ ) {
 			for( int x = 0; x < length; x++ ) {
-				subset[ y ][ x ] = getPixelAt( startX + x, startY + y );
+				subset[ y ][ x ] = getPixel( startX + x, startY + y );
 			}
 		}
 		
@@ -149,7 +149,7 @@ public class Image {
 			return "";
 		}
 		
-		final String NEWLINE = System.getProperty( "line.separator" );
+		final String NEWLINE = System.lineSeparator();
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append( " " );
@@ -161,7 +161,7 @@ public class Image {
 		for( int y = 0; y < getHeight(); y++ ) {
 			sb.append( y );
 			for( int x = 0; x < getLength(); x++ ) {
-			  sb.append( getPixelAt( x, y ) );			
+			  sb.append( getPixel( x, y ) );			
 			}
 			sb.append( NEWLINE );
 		}

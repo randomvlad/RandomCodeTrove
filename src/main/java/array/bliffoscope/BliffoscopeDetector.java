@@ -3,9 +3,6 @@ package array.bliffoscope;
 import java.util.*;
 import java.awt.Point;
 
-/**
- * @author Vlad Poskatcheev
- */
 public class BliffoscopeDetector {
 	
 	public static BliffoscopeDetector getInstance() {
@@ -46,15 +43,14 @@ public class BliffoscopeDetector {
 	 * @throws NullPointerException if either source or target are null
 	 */
 	public List<DetectionResult> detect( Image source, Image target ) {
-		List<DetectionResult> results = new ArrayList<DetectionResult>();
+		List<DetectionResult> results = new ArrayList<>();
 		
 		int xEnd = source.getLength() - target.getLength();
 		int yEnd = source.getHeight() - target.getHeight();
 		
 		for( int x = 0; x <= xEnd; x++ ) {
 			for( int y = 0; y <= yEnd; y++ ) {
-				Image subsetImage = source.createSubset( x, y, 
-						target.getLength(), target.getHeight() );
+				Image subsetImage = source.createSubset( x, y, target.getLength(), target.getHeight() );
 				
 				double imageSimilarity = subsetImage.calculateSimilarity( target );
 				if( imageSimilarity >= acceptableAccuracy ) {

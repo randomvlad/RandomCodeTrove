@@ -11,8 +11,6 @@ package array.bliffoscope;
  * ghi
  * <p>
  * Coordinate (0,0) points to 'a', while coordinate (2,2) to 'i'.
- * 
- * @author Vlad Poskatcheev
  */
 public class Image {
 	

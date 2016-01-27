@@ -1,76 +1,51 @@
 package array.bliffoscope;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
- 
-/**
- * @author Vlad Poskatcheev
- */
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class BliffoscopeMain {
-	
-	public static void main( String[] args ) {
-		Image targetShip = loadImageFrom( "data/Starship.blf" );
-		Image targetTorpedo = loadImageFrom( "data/SlimeTorpedo.blf" );
-		Image spaceTerrain = loadImageFrom( "data/TestData.blf" );
-		if( targetShip == null || targetTorpedo == null || spaceTerrain == null ) {
-			return;
-		}
-		
-		List<Image> targets = new ArrayList<Image>();
-		targetShip.setName( "starship" );
-		targets.add( targetShip );
-		targetTorpedo.setName( "slime torpedo" );
-		targets.add( targetTorpedo );
-		
+
+	public static void main( String[] args ) throws IOException {
+
+		Image targetShip = loadImage( "starship", "data/Starship.blf" );
+		Image targetTorpedo = loadImage( "slime torpedo", "data/SlimeTorpedo.blf" );
+		Image spaceTerrain = loadImage( "space", "data/TestData.blf" );
+
 		BliffoscopeDetector detector = BliffoscopeDetector.getInstance();
 		// detector.setAcceptableAccuracy( 0.71 );
-		List<DetectionResult> results = new ArrayList<DetectionResult>();
-		for( Image target : targets ) {
-			results.addAll( detector.detect( spaceTerrain, target ) );
-		}
-		
-		if( ! results.isEmpty() ) {
-			Collections.sort( results );
-			Collections.reverse( results );
-			
+
+		List<DetectionResult> results = new ArrayList<>();
+		results.addAll( detector.detect( spaceTerrain, targetShip ) );
+		results.addAll( detector.detect( spaceTerrain, targetTorpedo ) );
+
+		if ( !results.isEmpty() ) {
+			Collections.sort( results, Collections.reverseOrder() );
+
 			System.out.println( "Found (" + results.size() + ") targets:" );
-			for( DetectionResult result : results ) {
+			for ( DetectionResult result : results ) {
 				System.out.println( result.toString() );
 			}
 		} else {
 			System.out.println( "No targets detected" );
 		}
 	}
-	
-	private static Image loadImageFrom( String fileName ) {
-		List<String> lines = new ArrayList<>();
+
+	private static Image loadImage( String imageName, String fileName ) throws IOException {
 		
-		BufferedReader readerIn = null;
-		try {
-			readerIn = new BufferedReader( new FileReader(fileName) );
-			String line = readerIn.readLine();
-			while( line != null ) {
-				lines.add( line );
-				line = readerIn.readLine();
-			}
-		} catch( Exception e ) {
-			System.out.println( "Error: unable to load: " + fileName );
-			return null;
-		} finally {
-			try {
-				if( readerIn != null ) {
-					readerIn.close();
-				}
-			} catch ( IOException ignore ) {}
-		}
+		Path path = Paths.get( BliffoscopeMain.class.getResource( fileName ).getPath() );
+		List<String> lines = Files.lines( path ).collect( Collectors.toList() );
 		
 		char[][] imageGrid = new char[ lines.size() ][];
-		for( int line = 0; line < lines.size(); line++ ) {
-			imageGrid[ line ]  = lines.get( line ).toCharArray();
+		for ( int i = 0; i < lines.size(); i++ ) {
+			imageGrid[ i ] = lines.get( i ).toCharArray();
 		}
-		
-		return new Image( imageGrid );
+
+		return new Image( imageName, imageGrid );
 	}
 }

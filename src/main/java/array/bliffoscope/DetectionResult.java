@@ -2,9 +2,6 @@ package array.bliffoscope;
 
 import java.awt.Point;
 
-/**
- * @author Vlad Poskatcheev
- */
 public class DetectionResult implements Comparable<DetectionResult> {
 	
 	private String detectedTarget;
@@ -16,7 +13,6 @@ public class DetectionResult implements Comparable<DetectionResult> {
 	private Point bottomLeft;
 	private Point bottomRight;
 	
-	/* default scope constructor */
 	DetectionResult( String detectedTarget, double accuracy ) {
 		this.detectedTarget = detectedTarget;
 		this.accuracy = accuracy;

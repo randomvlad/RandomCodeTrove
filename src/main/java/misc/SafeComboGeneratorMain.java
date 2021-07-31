@@ -42,11 +42,12 @@ public class SafeComboGeneratorMain {
 			}
 
 			List<Integer> allowedMoves = lookup.get(buttonNumber);
+
+			// each button number will have at least one next button to pick
+			pickButton(allowedMoves.get(0), new ArrayList<>(fragment), sequenceLength);
+
 			if (allowedMoves.size() == 2) {
-				pickButton(allowedMoves.get(0), new ArrayList<>(fragment), sequenceLength);
 				pickButton(allowedMoves.get(1), new ArrayList<>(fragment), sequenceLength);
-			} else {
-				pickButton(allowedMoves.get(0), new ArrayList<>(fragment), sequenceLength);
 			}
 		}
 	}

@@ -9,8 +9,9 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 
 ## Problems
 
-| Problem (7) | Solution |
+| Problem (8) | Solution |
 | --- | --- |
+| [Power Function](https://www.techiedelight.com/power-function-implementation-recursive-iterative) | [Solution](src/main/java/math/power/Solution.java) - [Unit Test](src/test/java/math/power/SolutionTest.java) |
 | [Rotate Square Clockwise](src/main/java/array/rotatesqr) | [Solution](src/main/java/array/rotatesqr/Solution.java) - [Unit Test](src/test/java/array/rotatesqr/SolutionTest.java) |
 | [Sum Binary Strings](src/main/java/string/sumbin) | [Solution](src/main/java/string/sumbin/Solution.java) - [Unit Test](src/test/java/string/sumbin/SolutionTest.java) |
 | [Braces Validator](src/main/java/string/braces) | [Solution](src/main/java/string/braces/Solution.java) - [Unit Test](src/test/java/string/braces/SolutionTest.java) |

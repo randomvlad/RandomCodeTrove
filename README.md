@@ -1,6 +1,6 @@
 # Random Code Trove
 
-A collection of memorable and smallish coding problems I've encountered along my journey as a software developer. Solutions coded in Java 8.
+A collection of memorable and smallish coding problems I've encountered along my journey as a software developer. Solutions coded in Java 17.
 
 Code Trove (7):
 * [Rotate Square Clockwise](src/main/java/array/rotatesqr)

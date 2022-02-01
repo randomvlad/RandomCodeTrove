@@ -23,7 +23,7 @@ YES
         ^ ERROR: brace ( is not closed
 ```
 
-For more examples, see [Unit test](BracesTest.java).
+For more examples, see [Unit Test](../../../../test/java/string/braces/SolutionTest.java).
 
 ### Notes:
 * I've encountered a slightly simpler version of this problem on a HackerRank exam for a company that was hiring. Original requirements were merely to print out YES or NO if a string had correctly closed/opened braces.

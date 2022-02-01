@@ -32,6 +32,15 @@ class SolutionTest {
         assertThat(result).isEqualTo(243); // 3 ^ 5 -> 9 ^ 2 * 3 -> 81 ^ 1 * 3
     }
 
+    /**
+     * @see <a href="https://www.math.utah.edu/~pa/math/0to0.html">What is 0 to the power 0?</a>
+     */
+    @Test
+    void powerEfficient_ZeroToZero_UndefinedBehaviorReturnOne() {
+        long result = solution.powerEfficient(0, 0);
+        assertThat(result).isEqualTo(1);
+    }
+
     @Test
     void powerEfficientBinOperators_TwoToFive_ExpectedResult() {
         long result = solution.powerEfficientBinOperators(2, 5);

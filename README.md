@@ -1,6 +1,6 @@
 # Random Code Trove
 
-A collection of memorable and smallish coding problems I've encountered along my journey as a software developer. Solutions coded in Java 17.
+A random collection of interview coding problems I've encountered along my journey as a software developer. Solutions are coded in Java 17.
 
 Most `Solution.java` classes come with a corresponding set of unit tests.
 Using [JUnit 5](https://junit.org/junit5/docs/current/user-guide/) along with [AssertJ](https://assertj.github.io/doc/)

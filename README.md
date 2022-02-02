@@ -9,8 +9,9 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 
 ## Problems
 
-| Problem (11) | Solution |
+| Problem (12) | Solution |
 | --- | --- |
+| [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k) | [Solution](src/main/java/array/subsumeq/Solution.java) - [Unit Test](src/test/java/array/subsumeq/SolutionTest.java) |
 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | [Solution](src/main/java/array/prodnoself/Solution.java) - [Unit Test](src/test/java/array/prodnoself/SolutionTest.java) |
 | [Power Function](https://www.techiedelight.com/power-function-implementation-recursive-iterative) | [Solution](src/main/java/math/power/Solution.java) - [Unit Test](src/test/java/math/power/SolutionTest.java) |
 | Recursive Multiply | [Solution](src/main/java/math/multiply/Solution.java) - [Unit Test](src/test/java/math/multiply/SolutionTest.java) |

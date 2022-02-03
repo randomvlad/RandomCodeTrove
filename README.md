@@ -9,7 +9,7 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 
 ## Problems
 
-| Problem (12) | Solution |
+| Problem (13) | Solution |
 | --- | --- |
 | [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k) | [Solution](src/main/java/array/subsumeq/Solution.java) - [Unit Test](src/test/java/array/subsumeq/SolutionTest.java) |
 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | [Solution](src/main/java/array/prodnoself/Solution.java) - [Unit Test](src/test/java/array/prodnoself/SolutionTest.java) |
@@ -20,6 +20,7 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | [Sum Binary Strings](src/main/java/string/sumbin) | [Solution](src/main/java/string/sumbin/Solution.java) - [Unit Test](src/test/java/string/sumbin/SolutionTest.java) |
 | [Braces Validator](src/main/java/string/braces) | [Solution](src/main/java/string/braces/Solution.java) - [Unit Test](src/test/java/string/braces/SolutionTest.java) |
 | [AP Missing Element](src/main/java/array/apmiss) | [Solution](src/main/java/array/apmiss/Solution.java) - [Unit Test](src/test/java/array/apmiss/SolutionTest.java) |
+| [Symmetric Tree](https://leetcode.com/problems/symmetric-tree) | [Solution](src/main/java/tree/symmetric/Solution.java) - [Unit Test](src/test/java/tree/symmetric/SolutionTest.java) |
 | [Linked List Reversal](src/main/java/list/reverse) | |
 | [Sentence Permutations](src/main/java/string/sentence) | |
 | [Bliffoscope](src/main/java/array/bliffoscope) | |

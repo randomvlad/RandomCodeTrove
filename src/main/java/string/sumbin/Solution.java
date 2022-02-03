@@ -1,8 +1,11 @@
 package string.sumbin;
 
+/**
+ * @see <a href="https://leetcode.com/problems/add-binary">Add Binary</a>
+ */
 public class Solution {
 
-    public String sum(String number1, String number2) {
+    public String addBinary(String number1, String number2) {
 
         StringBuilder sbSum = new StringBuilder();
 

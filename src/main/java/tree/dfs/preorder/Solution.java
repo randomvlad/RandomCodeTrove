@@ -43,8 +43,6 @@ public class Solution {
 
     /**
      * Recursive Pre-Order traversal.
-     *
-     * @see #traversePreOrderIterative(TreeNode)
      */
     public List<Integer> traversePreOrderRecursive(TreeNode root) {
         List<Integer> result = new ArrayList<>();

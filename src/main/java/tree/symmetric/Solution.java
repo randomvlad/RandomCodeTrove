@@ -2,6 +2,7 @@ package tree.symmetric;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import tree.util.TreeNode;
 
 /**
  * @see <a href="https://leetcode.com/problems/symmetric-tree/">Symmetric Tree</a>
@@ -60,25 +61,5 @@ public class Solution {
         }
 
         return true;
-    }
-
-    static class TreeNode {
-
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

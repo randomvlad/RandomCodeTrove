@@ -3,7 +3,7 @@ package tree.symmetric;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import tree.symmetric.Solution.TreeNode;
+import tree.util.TreeNode;
 
 class SolutionTest {
 

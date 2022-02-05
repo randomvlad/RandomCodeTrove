@@ -13,7 +13,7 @@ public class Solution {
      * Iterative Pre-Order traversal (Node Left Right - NLR).
      *
      * Time Complexity: O(N) where N is number of nodes
-     * Space Complexity: O(N)
+     * Space Complexity: O(H) where H is the tree height
      */
     public List<Integer> traversePreOrderIterative(TreeNode root) {
         if (root == null) {

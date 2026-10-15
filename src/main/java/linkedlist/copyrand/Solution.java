@@ -10,11 +10,11 @@ public class Solution {
 
     /**
      * Solution with a HashMap.
-     *
+     * <p>
      * Time complexity: O(n)
      * Space complexity: O(n)
      */
-    public Node copyRandomList(Node head) {
+    Node copyRandomList(Node head) {
         Map<Node, Node> originalToCopy = new HashMap<>();
 
         Node current = head;
@@ -38,7 +38,7 @@ public class Solution {
 
     // TODO: a more clever implementation exits without using a HashMap
     // See: https://leetcode.com/problems/copy-list-with-random-pointer/discuss
-    public Node copyRandomListNoMap(Node head) {
+    Node copyRandomListNoMap(Node head) {
         return null;
     }
 

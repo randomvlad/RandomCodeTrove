@@ -22,7 +22,6 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | [Sum Binary Strings](src/main/java/string/sumbin) | [Solution](src/main/java/string/sumbin/Solution.java) - [Unit Test](src/test/java/string/sumbin/SolutionTest.java) |
 | [Braces Validator](src/main/java/string/braces) | [Solution](src/main/java/string/braces/Solution.java) - [Unit Test](src/test/java/string/braces/SolutionTest.java) |
 | [AP Missing Element](src/main/java/array/apmiss) | [Solution](src/main/java/array/apmiss/Solution.java) - [Unit Test](src/test/java/array/apmiss/SolutionTest.java) |
-| [Linked List Reversal](src/main/java/list/reverse) | |
 | [Sentence Permutations](src/main/java/string/sentence) | |
 | [Bliffoscope](src/main/java/array/bliffoscope) | |
 
@@ -38,3 +37,10 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | DFS Reverse Post-Order (RLN) |  |
 | DFS Reverse In-Order (RNL) |  |
 
+### Linked List
+
+| Problem | Solution | Tests |
+| --- | --- | --- |
+| [Least Recently Used (LRU) Cache](https://leetcode.com/problems/lru-cache/description/) | [Link](src/main/java/linkedlist/lru/LRUCache.java) | [Link](src/test/java/linkedlist/lru/LRUCacheTest.java) |
+| [Linked List Reversal](src/main/java/list/reverse/README.md) | [Link](src/main/java/list/reverse/ReverseListMain.java) | [Link](src/main/java/list/reverse/ReverseListTest.java) |
+| [Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/description/) | [Link](src/main/java/linkedlist/copyrand/Solution.java) | |

@@ -1,4 +1,6 @@
-# Random Code Trove
+<h1 align="center">
+    <img alt="Code Trove Logo" src="assets/random-code-treasure-chest.jpeg" style="height: 150px"><br>Random Code Trove
+</h1>
 
 A random collection of interview coding problems I've encountered along my journey as a software developer. Solutions are coded in Java 17.
 

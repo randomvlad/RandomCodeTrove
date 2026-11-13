@@ -25,16 +25,16 @@ class LRUCacheTest {
         assertThat(cache.get(2)).isEqualTo(-1); // not found
 
         cache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
-        assertThat(cache.toString()).isEqualTo("cache={4=4, 3=3}, head=4, tail=3");
+        assertThat(cache.toString()).isEqualTo("cache={3=3, 4=4}, head=4, tail=3");
 
         assertThat(cache.get(1)).isEqualTo(-1); // not found
-        assertThat(cache.toString()).isEqualTo("cache={4=4, 3=3}, head=4, tail=3");
+        assertThat(cache.toString()).isEqualTo("cache={3=3, 4=4}, head=4, tail=3");
 
         assertThat(cache.get(3)).isEqualTo(3);
-        assertThat(cache.toString()).isEqualTo("cache={4=4, 3=3}, head=3, tail=4");
+        assertThat(cache.toString()).isEqualTo("cache={3=3, 4=4}, head=3, tail=4");
 
         assertThat(cache.get(4)).isEqualTo(4);
-        assertThat(cache.toString()).isEqualTo("cache={4=4, 3=3}, head=4, tail=3");
+        assertThat(cache.toString()).isEqualTo("cache={3=3, 4=4}, head=4, tail=3");
     }
 
     @Test
@@ -43,6 +43,7 @@ class LRUCacheTest {
 
         cache.put(2, 1);
         assertThat(cache.get(2)).isEqualTo(1);
+        assertThat(cache.toString()).isEqualTo("cache={2=1}, head=2, tail=2");
 
         cache.put(3, 2);
         assertThat(cache.toString()).isEqualTo("cache={3=2}, head=3, tail=3");

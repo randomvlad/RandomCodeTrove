@@ -1,6 +1,6 @@
 package linkedlist.lru;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -10,84 +10,63 @@ public class LRUCache {
 
     private final int capacity;
     private final Map<Integer, Node> cache;
-    private Node head;
-    private Node tail;
+    private final Node head; // head.next = most recently used
+    private final Node tail; // tail.prev = least recently used (up for eviction if criteria is met)
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        this.cache = new HashMap<>(capacity);
+        this.cache = new LinkedHashMap<>(); // Note: using linked hash map to preserve order for String() implementation and unit test comparisons
+
+        // use of dummy/sentinel nodes to avoid handling nulls for adding new nodes at the front and
+        // evicting nodes from the back. Results in more compact (and possibly "easier") code flow
+        this.head = new Node(0, 0);
+        this.tail = new Node(0, 0);
+        this.head.next = this.tail;
+        this.tail.prev = this.head;
     }
 
     public int get(int key) {
-        if (!cache.containsKey(key)) {
+        if (cache.containsKey(key)) {
+            Node node = cache.get(key);
+            remove(node);
+            insertAtFront(node);
+            return node.value;
+        } else {
             return -1;
         }
-
-        Node node = cache.get(key);
-        moveExistingToHead(node);
-        return node.value;
     }
 
-    /**
-     * Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the
-     * number of keys exceeds the capacity from this operation, evict the least recently used key.
-     */
     public void put(int key, int value) {
         if (cache.containsKey(key)) {
             Node node = cache.get(key);
-            moveExistingToHead(node);
             node.value = value;
+            remove(node);
+            insertAtFront(node);
         } else {
+            // add new node; if cache at full capacity, evict the least recently node
             if (cache.size() == this.capacity) {
-                int leastRecentlyUsed = tail.key;
-                cache.remove(leastRecentlyUsed);
-
-                Node newTail = tail.prev;
-                if (newTail != null) {
-                    newTail.next = null;
-                    tail.prev = null;
-                }
-                tail = newTail;
+                Node lru = tail.prev;
+                cache.remove(lru.key);
+                remove(lru);
             }
 
             Node newNode = new Node(key, value);
-            addNewNodeAsHead(newNode);
             cache.put(key, newNode);
+            insertAtFront(newNode);
         }
     }
 
-    private void addNewNodeAsHead(Node node) {
-        if (cache.isEmpty()) {
-            head = node;
-            tail = node;
-            return;
-        }
-
-        node.next = head;
-        head.prev = node;
-        head = node;
+    private void remove(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
 
-    private void moveExistingToHead(Node node) {
-        Node prevNode = node.prev;
-        if (prevNode == null) {
-            return;  // node is already the head and most recently used
-        }
+    private void insertAtFront(Node node) {
+        node.next = head.next;
+        node.prev = head;
 
-        Node nextNode = node.next;
-        if (nextNode == null) {
-            prevNode.next = null;
-            tail = prevNode; // tail is being moved to head, set a new tail to previous node
-        } else {
-            prevNode.next = nextNode;
-            nextNode.prev = prevNode;
-        }
-
-        // make this node the new head (aka most recently used)
-        node.next = head;
-        node.next.prev = node;
-        node.prev = null;
-        head = node;
+        head.next.prev = node;
+        head.next = node;
     }
 
     @Override
@@ -95,16 +74,16 @@ public class LRUCache {
         return String.format(
                 "cache=%s, head=%s, tail=%s",
                 cache,
-                head != null ? head.key : "null",
-                tail != null ? tail.key : "null"
+                head.next != tail ? head.next.key : "null",
+                tail.prev != null ? tail.prev.key : "null"
         );
     }
 
     static class Node {
-        Node prev;
-        Node next;
         int key;
         int value;
+        Node next;
+        Node prev;
 
         Node(int key, int value) {
             this.key = key;

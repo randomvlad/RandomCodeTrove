@@ -46,3 +46,9 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | [Least Recently Used (LRU) Cache](https://leetcode.com/problems/lru-cache/description/) | [Link](src/main/java/linkedlist/lru/LRUCache.java) | [Link](src/test/java/linkedlist/lru/LRUCacheTest.java) |
 | [Linked List Reversal](src/main/java/list/reverse/README.md) | [Link](src/main/java/list/reverse/ReverseListMain.java) | [Link](src/test/java/list/reverse/ReverseListTest.java) |
 | [Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/description/) | [Link](src/main/java/linkedlist/copyrand/Solution.java) | |
+
+### Graph
+
+| Problem | Solution | Tests |
+| --- | --- | --- |
+| [Number of Islands](https://leetcode.com/problems/number-of-islands/description/) | [Link](src/main/java/graph/islands/Islands.java) | [Link](src/test/java/graph/islands/IslandsTest.java) |

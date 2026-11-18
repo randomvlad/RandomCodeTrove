@@ -52,3 +52,9 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | Problem | Solution | Tests |
 | --- | --- | --- |
 | [Number of Islands](https://leetcode.com/problems/number-of-islands/description/) | [Link](src/main/java/graph/islands/Islands.java) | [Link](src/test/java/graph/islands/IslandsTest.java) |
+
+### Breadth-First Search
+
+| Problem | Solution | Tests |
+| --- | --- | --- |
+| [Rotten Oranges](https://leetcode.com/problems/rotting-oranges/) | [Link](src/main/java/bfs/oranges/RottingOranges.java) | [Link](src/test/java/bfs/oranges/RottingOrangesTest.java) |

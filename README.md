@@ -65,3 +65,4 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | Problem | Solution | Tests |
 | --- | --- | --- |
 | [House Robber](https://leetcode.com/problems/house-robber/description/) | [Link](src/main/java/dp/houserobber/HouseRobberIterative.java) | [Link](src/test/java/dp/houserobber/HouseRobberIterativeTest.java) |
+| [Knight Dialer](https://leetcode.com/problems/knight-dialer/description/) | [Link](src/main/java/dp/knightdialer/KnightDialerIterative.java) | [Link](src/test/java/dp/knightdialer/KnightDialerIterativeTest.java) |

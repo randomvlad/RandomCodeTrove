@@ -32,6 +32,7 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | Problem | Solution |
 | --- | --- |
 | [Symmetric Tree](https://leetcode.com/problems/symmetric-tree) | [Solution](src/main/java/tree/symmetric/Solution.java) - [Unit Test](src/test/java/tree/symmetric/SolutionTest.java) |
+| [Binary Tree Longest Consecutive Sequence](https://algo.monster/liteproblems/298) | [Solution](src/main/java/tree/dfs/conseq/BinTreeConsecutiveSequence.java) - [Unit Test](src/test/java/tree/dfs/conseq/BinTreeConsecutiveSequenceTest.java) |
 | DFS Pre-Order (NLR) | [Solution](src/main/java/tree/dfs/preorder/Solution.java) - [Unit Test](src/test/java/tree/dfs/preorder/SolutionTest.java) |
 | DFS Post-Order (LRN) | [Solution](src/main/java/tree/dfs/postorder/Solution.java) - [Unit Test](src/test/java/tree/dfs/postorder/SolutionTest.java) |
 | DFS In-Order (LNR) | [Solution](src/main/java/tree/dfs/inorder/Solution.java) - [Unit Test](src/test/java/tree/dfs/inorder/SolutionTest.java) |

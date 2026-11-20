@@ -1,8 +1,11 @@
 package graph.islands;
 
+import annotation.DepthFirstSearch;
+
 /**
  * <a href="https://leetcode.com/problems/number-of-islands/description/">200. Number of Islands</a>
  */
+@DepthFirstSearch
 public class Islands {
 
     static final char CELL_ISLAND = '1';

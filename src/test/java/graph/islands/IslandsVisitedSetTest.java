@@ -9,7 +9,7 @@ class IslandsVisitedSetTest {
     @Test
     void numIslands_LeetCodeExample1_Output1() {
         // Given
-        char[][] grid = IslandsTest.createGrid(
+        char[][] grid = IslandsRecursiveTest.createGrid(
                 "11110",
                 "11010",
                 "11000",
@@ -26,7 +26,7 @@ class IslandsVisitedSetTest {
     @Test
     void numIslands_LeetCodeExample2_Output2() {
         // Given
-        char[][] grid = IslandsTest.createGrid(
+        char[][] grid = IslandsRecursiveTest.createGrid(
                 "11000",
                 "11000",
                 "00100",

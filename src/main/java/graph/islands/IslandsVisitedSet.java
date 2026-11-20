@@ -1,14 +1,15 @@
 package graph.islands;
 
+import annotation.DepthFirstSearch;
+
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * <p>
  * Solution uses a HashSet to keep track of visited islands. It's not an optimal solution (uses extra memory space),
- * since the problem definition allows to update original grid array of arrays. It's a clever hack to re-use existing
- * memory and achieve space complexity O(1). However, if problem definition was to prohibit modifying original grid
- * value then a separate data structure is necessary.
+ * since the problem definition allows to update original grid. Modifying the grid in place is a clever hack to re-use
+ * existing memory. Note that either way the overall O() space complexity is the same.
  * <p>
  * In the context of a LeetCode problem, modifying the original input value is a clever approach. In the real world
  * it's best to avoid modifying method input parameters. It is often seen as code smell and poor practice. It
@@ -17,14 +18,19 @@ import java.util.Set;
  * Time Complexity: O(m x n) <br />
  * Space Complexity: O(m x n) <br />
  *
- * <a href="https://leetcode.com/problems/number-of-islands/description/">200. Number of Islands</a>
+ * @see <a href="https://leetcode.com/problems/number-of-islands/description/">200. Number of Islands</a>
+ * @see IslandsRecursive
+ * @see IslandsIterative
  */
+@DepthFirstSearch
 public class IslandsVisitedSet {
 
     static final char CELL_ISLAND = '1';
-    static final char CELL_WATER = '0';
 
-    // Store at class level to avoid passing as method parameters on each call of visit()
+    /**
+     * String is a composite key for a cell: "${i}-${j}".
+     * Note: boolean[][] or int[] with key=(i * cols + j) would be more space efficient.
+     */
     private Set<String> visited;
     private char[][] grid;
 
@@ -34,7 +40,7 @@ public class IslandsVisitedSet {
 
         int count = 0;
         for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 String cellId = i + "-" + j;
                 if (grid[i][j] == CELL_ISLAND && !visited.contains(cellId)) {
                     visit(i, j);
@@ -47,7 +53,7 @@ public class IslandsVisitedSet {
     }
 
     private void visit(int i, int j) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length) {
             return;
         }
 

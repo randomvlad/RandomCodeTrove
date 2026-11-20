@@ -52,7 +52,7 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 
 | Problem | Solution | Tests |
 | --- | --- | --- |
-| [Number of Islands](https://leetcode.com/problems/number-of-islands/description/) | [Link](src/main/java/graph/islands/Islands.java) | [Link](src/test/java/graph/islands/IslandsTest.java) |
+| [Number of Islands](https://leetcode.com/problems/number-of-islands/description/) | [Link](src/main/java/graph/islands/IslandsRecursive.java) | [Link](src/test/java/graph/islands/IslandsRecursiveTest.java) |
 
 ### Breadth-First Search
 

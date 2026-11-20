@@ -2,9 +2,12 @@ package graph.islands;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
 
-class IslandsTest {
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+class IslandsRecursiveTest {
 
     @Test
     void numIslands_LeetCodeExample1_Output1() {
@@ -17,7 +20,7 @@ class IslandsTest {
         );
 
         // When
-        int actualCount = new Islands().numIslands(grid);
+        int actualCount = new IslandsRecursive().numIslands(grid);
 
         // Then
         assertThat(actualCount).isEqualTo(1);
@@ -34,10 +37,29 @@ class IslandsTest {
         );
 
         // When
-        int actualCount = new Islands().numIslands(grid);
+        int actualCount = new IslandsRecursive().numIslands(grid);
 
         // Then
         assertThat(actualCount).isEqualTo(3);
+    }
+
+    /**
+     * Expected StackOverflow on large inputs given the recursive implementation.
+     * Note: the default stack size of most JVMs will be exceeded. However, test can pass on larger stack sizes.
+     */
+    @Test
+    void numIslands_VeryLargeIsland_StackOverflow() {
+        // Given
+        int size = 2000;
+        char[][] grid = new char[size][size];
+        for (char[] row : grid) {
+            Arrays.fill(row, IslandsRecursive.CELL_ISLAND);
+        }
+
+        // When
+        assertThatThrownBy(() -> new IslandsRecursive().numIslands(grid))
+                // Then
+                .isInstanceOf(StackOverflowError.class);
     }
 
     static char[][] createGrid(String... rows) {

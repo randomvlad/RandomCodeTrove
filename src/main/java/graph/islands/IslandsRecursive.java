@@ -3,10 +3,16 @@ package graph.islands;
 import annotation.DepthFirstSearch;
 
 /**
- * <a href="https://leetcode.com/problems/number-of-islands/description/">200. Number of Islands</a>
+ * Time Complexity: O(m x n) <br />
+ * Space Complexity: O(m x n) for the recursive call stack itself. Sometimes this gets incorrectly ignored
+ * to conclude it must be O(1) since input grid gets updated to keep track of visited islands by drowning them <br />
+ *
+ * @see <a href="https://leetcode.com/problems/number-of-islands/description/">200. Number of Islands</a>
+ * @see IslandsIterative
+ * @see IslandsVisitedSet
  */
 @DepthFirstSearch
-public class Islands {
+public class IslandsRecursive {
 
     static final char CELL_ISLAND = '1';
     static final char CELL_WATER = '0';
@@ -18,7 +24,7 @@ public class Islands {
         this.grid = grid;
 
         for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == CELL_ISLAND) {
                     count++;
                     visit(i, j);
@@ -30,7 +36,7 @@ public class Islands {
     }
 
     private void visit(int i, int j) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length) {
             return;
         }
 

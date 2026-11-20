@@ -69,4 +69,27 @@ class RottingOrangesTest {
         // Then
         assertThat(actualMinutes).isEqualTo(1);
     }
+
+    @Test
+    void orangesRotting_MaxGridCornerSource_Output18() {
+        // Given
+        int[][] grid = new int[][] {
+            { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        };
+
+        // When
+        int actualMinutes = new RottingOranges().orangesRotting(grid);
+
+        // Then
+        assertThat(actualMinutes).isEqualTo(18);
+    }
 }

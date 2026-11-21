@@ -48,11 +48,13 @@ outlined [here](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tes
 | [Linked List Reversal](src/main/java/list/reverse/README.md) | [Link](src/main/java/list/reverse/ReverseListMain.java) | [Link](src/test/java/list/reverse/ReverseListTest.java) |
 | [Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/description/) | [Link](src/main/java/linkedlist/copyrand/Solution.java) | |
 
-### Graph
+### Depth-First Search
 
 | Problem | Solution | Tests |
 | --- | --- | --- |
 | [Number of Islands](https://leetcode.com/problems/number-of-islands/description/) | [Link](src/main/java/graph/islands/IslandsRecursive.java) | [Link](src/test/java/graph/islands/IslandsRecursiveTest.java) |
+| DAG Longest Consecutive Sequence | [Link](src/main/java/dfs/conseq/DAGConsecutiveSequence.java) | [Link](src/test/java/dfs/conseq/DAGConsecutiveSequenceTest.java) |
+
 
 ### Breadth-First Search
 
